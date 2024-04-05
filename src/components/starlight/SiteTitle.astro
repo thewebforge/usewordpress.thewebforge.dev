@@ -1,0 +1,50 @@
+---
+import logotype from "~/assets/logos/twf.svg?raw";
+import { pathWithBase } from "@nm/@astrojs/starlight/utils/base";
+import type { Props } from "@astrojs/starlight/props";
+
+const href = pathWithBase(Astro.props.locale || "");
+---
+
+<span class="site-title sl-flex">
+  <a
+    href="/"
+    class="logotype"
+    set:html={logotype}
+    aria-label="useWordPress website"
+  />
+</span>
+
+<style>
+  @property --_accent {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: var(--sl-color-accent);
+  }
+  @property --_white {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: var(--sl-color-white);
+  }
+  .site-title {
+    --_accent: var(--sl-color-accent);
+    --_white: var(--sl-color-white);
+    justify-self: flex-start;
+    max-width: 100%;
+    overflow: hidden;
+    align-items: center;
+    text-decoration: none;
+  }
+  .site-title a:hover {
+    --_accent: var(--sl-color-accent-high);
+    --_white: var(--sl-color-white);
+  }
+
+  .logotype {
+    height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y) - 0.25rem);
+    width: auto;
+    object-fit: contain;
+    object-position: 0 50%;
+    color: var(--sl-color-text-accent);
+  }
+</style>

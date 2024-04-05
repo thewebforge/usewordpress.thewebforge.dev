@@ -1,0 +1,9 @@
+<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+
+<script>
+  const favicon = document.querySelector('link[rel="icon"]')!;
+  document.addEventListener("visibilitychange", () => {
+    const hidden = document.hidden;
+    favicon.setAttribute("href", `/favicons/favicon${hidden ? "-hidden" : ""}.svg`);
+  });
+</script>
